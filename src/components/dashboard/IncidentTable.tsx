@@ -53,7 +53,7 @@ export default function IncidentTable() {
 
   if (isLoading) {
     return (
-      <div className="bg-slate-800 border border-slate-700 rounded-lg p-6">
+        <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
         <div className="animate-pulse space-y-4">
           <div className="h-6 bg-slate-700 rounded w-48"></div>
           <div className="space-y-2">
@@ -68,7 +68,7 @@ export default function IncidentTable() {
 
   if (isError) {
     return (
-      <div className="bg-slate-800 border border-red-700 rounded-lg p-6">
+      <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
         <p className="text-red-400">Error loading incidents</p>
       </div>
     );
@@ -77,9 +77,9 @@ export default function IncidentTable() {
   return (
     <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
       {/* Header */}
-      <div className="p-3 sm:p-4 md:p-6 border-b border-slate-700">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-          <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 flex-wrap">
+      <div className="p-4 sm:p-6 md:p-8 lg:p-10 border-b border-slate-700">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 md:gap-6">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-wrap">
             <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-500 rounded-full flex-shrink-0"></div>
             <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white">Active Incidents</h3>
             <Badge variant="neutral" size="sm" className="bg-slate-700/50 text-slate-300 border-slate-600/50 text-[10px] sm:text-xs">

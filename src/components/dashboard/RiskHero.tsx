@@ -78,9 +78,9 @@ export default function RiskHero() {
   ).length;
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 sm:p-4 md:p-6 lg:p-8 w-full">
+    <div className="bg-slate-800 border border-slate-700 rounded-lg p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 w-full">
       {/* Header Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2 md:gap-0 mb-3 sm:mb-4 md:mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
         <h2 className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-400 uppercase tracking-wider">
           GLOBAL RISK LEVEL
         </h2>
@@ -90,7 +90,7 @@ export default function RiskHero() {
       </div>
 
       {/* Main Display */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 md:gap-6">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 md:gap-8 lg:gap-10">
         {/* Large Circular Icon */}
         <div
           className={`
@@ -105,25 +105,25 @@ export default function RiskHero() {
 
         {/* Risk Level Text and Stats */}
         <div className="flex-1 w-full min-w-0">
-          <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold ${config.textColor} mb-2 sm:mb-3 md:mb-4 text-center sm:text-left break-words`}>
+          <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold ${config.textColor} mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-center sm:text-left break-words`}>
             {config.label}
           </h1>
           
           {/* Statistics Cards */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4 justify-center sm:justify-start">
-            <div className="bg-slate-900/50 border border-slate-700 rounded px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 min-w-[70px] sm:min-w-[80px]">
+          <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6 lg:mb-8 justify-center sm:justify-start">
+            <div className="bg-slate-900/50 border border-slate-700 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-white font-technical">
                 {activeCount}
               </div>
               <div className="text-[10px] sm:text-xs text-slate-400 uppercase">ACTIVE</div>
             </div>
-            <div className="bg-red-600/20 border border-red-500/30 rounded px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 min-w-[70px] sm:min-w-[80px]">
+            <div className="bg-red-600/20 border border-red-500/30 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-red-400 font-technical">
                 {criticalCount}
               </div>
               <div className="text-[10px] sm:text-xs text-red-400 uppercase">CRITICAL</div>
             </div>
-            <div className="bg-orange-600/20 border border-orange-500/30 rounded px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 min-w-[70px] sm:min-w-[80px]">
+            <div className="bg-orange-600/20 border border-orange-500/30 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
               <div className="text-lg sm:text-xl md:text-2xl font-bold text-orange-400 font-technical">
                 {suspiciousCount}
               </div>

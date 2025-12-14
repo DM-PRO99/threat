@@ -90,3 +90,5 @@ Este PR establece la arquitectura frontend completa para ThreatBeacon utilizando
 **Revisores**: @AndresGonzales (para integridad de contrato API y alineación DTO), @JuanPabloVargas (para finalización de arquitectura y visión)
 
 
+
+

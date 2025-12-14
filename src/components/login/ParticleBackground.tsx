@@ -5,18 +5,38 @@
  * Animated background with particles, grid, scan line, and HUD decorations
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  delay: number;
+  duration: number;
+}
+
 export default function ParticleBackground() {
-  // Generate random particles
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: 10 + Math.random() * 10,
-  }));
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Generate random particles only on client side
+    const generatedParticles = Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 10 + Math.random() * 10,
+    }));
+    setParticles(generatedParticles);
+  }, []);
+
+  if (!isClient) {
+    // Return empty div on server side to prevent hydration mismatch
+    return <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" />;
+  }
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
