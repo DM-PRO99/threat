@@ -13,7 +13,7 @@ import NotificationAlarm from '@/components/dashboard/NotificationAlarm';
 
 export default function OverviewPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-3">
       <NotificationAlarm />
       
       {/* Global Risk Level Section */}
@@ -22,7 +22,7 @@ export default function OverviewPage() {
       </div>
 
       {/* Responsive Grid Layout: Incidents Table + AI Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
         {/* Incidents Table - 8 columns on desktop, full on mobile */}
         <div className="lg:col-span-8 order-2 lg:order-1">
           <IncidentTable />

@@ -78,10 +78,10 @@ export default function RiskHero() {
   ).length;
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 w-full shadow-lg transition-all duration-300 hover:shadow-xl">
+    <div className="bg-slate-800 border border-slate-700 rounded-lg p-3 w-full shadow-lg transition-all duration-300 hover:shadow-xl">
       {/* Header Row */}
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-sm font-medium text-slate-400 uppercase tracking-wider">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-xs font-medium text-slate-400 uppercase tracking-wider">
           GLOBAL RISK LEVEL
         </h2>
         <div className="text-xs text-slate-500 font-technical">
@@ -90,52 +90,52 @@ export default function RiskHero() {
       </div>
 
       {/* Main Display */}
-      <div className="flex flex-col lg:flex-row items-center gap-8">
+      <div className="flex flex-col lg:flex-row items-center gap-3">
         {/* Large Circular Icon */}
         <div
           className={`
-            w-20 h-20 rounded-full ${config.iconBg}
+            w-14 h-14 rounded-full ${config.iconBg}
             flex items-center justify-center
             flex-shrink-0 shadow-lg
           `}
         >
-          <span className="text-3xl">{config.icon}</span>
+          <span className="text-xl">{config.icon}</span>
         </div>
 
         {/* Risk Level Text */}
         <div className="flex-1 text-center lg:text-left">
-          <div className={`text-4xl lg:text-5xl font-bold ${config.textColor} mb-2`}>
+          <div className={`text-2xl lg:text-3xl font-bold ${config.textColor} mb-1`}>
             {config.label}
           </div>
-          <div className="text-slate-400 text-sm">
+          <div className="text-slate-400 text-xs">
             Risk assessment updated in real-time
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-row lg:flex-col gap-3">
+        <div className="flex flex-row lg:flex-col gap-2">
           <MuteBuzzerButton />
         </div>
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
-          <div className="text-2xl font-bold text-blue-400 mb-1">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
+        <div className="bg-slate-900/50 rounded-lg p-2 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-lg font-bold text-blue-400 mb-1">
             {activeCount}
           </div>
           <div className="text-xs text-slate-400 uppercase tracking-wider">ACTIVE</div>
         </div>
         
-        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
-          <div className="text-2xl font-bold text-red-400 mb-1">
+        <div className="bg-slate-900/50 rounded-lg p-2 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-lg font-bold text-red-400 mb-1">
             {criticalCount}
           </div>
           <div className="text-xs text-slate-400 uppercase tracking-wider">CRITICAL</div>
         </div>
         
-        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
-          <div className="text-2xl font-bold text-orange-400 mb-1">
+        <div className="bg-slate-900/50 rounded-lg p-2 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-lg font-bold text-orange-400 mb-1">
             {suspiciousCount}
           </div>
           <div className="text-xs text-slate-400 uppercase tracking-wider">SUSPICIOUS</div>

@@ -62,10 +62,10 @@ export default function LiveFeedPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Live Feed</h1>
+          <h1 className="text-xl font-bold text-white mb-2">Live Feed</h1>
           <p className="text-slate-400">
             Real-time security events and alerts
           </p>
