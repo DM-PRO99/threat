@@ -174,7 +174,7 @@ export default function IncidentDetailPage() {
         {/* AI Insight */}
         <div>
           <AiInsightCard
-            insight={insight?.insight}
+            insight={insight?.insightText}
             isLoading={isLoadingInsight}
             isError={isErrorInsight}
             generatedAt={insight?.generatedAt}
