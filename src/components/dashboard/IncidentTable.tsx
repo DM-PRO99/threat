@@ -5,7 +5,7 @@
  * Active Incidents table matching the design image exactly
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIncidents } from '@/hooks/useIncidents';
 import Badge from '@/components/ui/Badge';
 import Link from 'next/link';
@@ -50,6 +50,15 @@ function formatIncidentId(id: number): string {
 
 export default function IncidentTable() {
   const { incidents, isLoading, isError } = useIncidents();
+  const [countdown, setCountdown] = useState(5);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prev) => (prev === 1 ? 5 : prev - 1));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   if (isLoading) {
     return (
@@ -87,7 +96,7 @@ export default function IncidentTable() {
             </Badge>
           </div>
           <div className="text-[9px] sm:text-xs text-slate-400 font-technical">
-            Auto-refresh: 5s
+            Auto-refresh: {countdown}s
           </div>
         </div>
       </div>
