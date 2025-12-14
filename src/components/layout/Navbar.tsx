@@ -15,7 +15,7 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <nav className="bg-slate-900 border-b border-slate-700 px-2 sm:px-4 md:px-6 py-2 sm:py-3">
+    <nav className="bg-slate-900 border-b border-slate-700 h-16 px-6 flex items-center">
       <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-8">
         {/* Mobile Menu Button */}
         <button

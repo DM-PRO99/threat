@@ -62,12 +62,12 @@ export default function IncidentTable() {
 
   if (isLoading) {
     return (
-        <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
-        <div className="animate-pulse space-y-4">
+      <div className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden w-full shadow-lg transition-all duration-300 hover:shadow-xl">
+        <div className="animate-pulse space-y-6 p-6">
           <div className="h-6 bg-slate-700 rounded w-48"></div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-12 bg-slate-700 rounded"></div>
+              <div key={i} className="h-14 bg-slate-700 rounded-lg"></div>
             ))}
           </div>
         </div>
@@ -77,25 +77,25 @@ export default function IncidentTable() {
 
   if (isError) {
     return (
-      <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
+      <div className="bg-slate-800 border border-red-700 rounded-xl overflow-hidden w-full p-6 shadow-lg">
         <p className="text-red-400">Error loading incidents</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-lg overflow-hidden w-full">
+    <div className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden w-full shadow-lg transition-all duration-300 hover:shadow-xl">
       {/* Header */}
-      <div className="p-4 sm:p-6 md:p-8 lg:p-10 border-b border-slate-700">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 md:gap-6">
-          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-wrap">
-            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-500 rounded-full flex-shrink-0"></div>
-            <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white">Active Incidents</h3>
-            <Badge variant="neutral" size="sm" className="bg-slate-700/50 text-slate-300 border-slate-600/50 text-[10px] sm:text-xs">
+      <div className="p-6 border-b border-slate-700">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-cyan-500 rounded-full flex-shrink-0"></div>
+            <h3 className="text-lg font-semibold text-white">Active Incidents</h3>
+            <Badge variant="neutral" size="sm" className="bg-slate-700/50 text-slate-300 border-slate-600/50 text-xs">
               {incidents.length} TOTAL
             </Badge>
           </div>
-          <div className="text-[9px] sm:text-xs text-slate-400 font-technical">
+          <div className="text-xs text-slate-400 font-technical">
             Auto-refresh: {countdown}s
           </div>
         </div>
@@ -106,16 +106,16 @@ export default function IncidentTable() {
         <table className="w-full min-w-[600px]">
           <thead className="bg-slate-900/50">
             <tr>
-              <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider font-technical">
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider font-technical">
                 ID
               </th>
-              <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
                 TYPE
               </th>
-              <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
                 SEVERITY
               </th>
-              <th className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 text-left text-[10px] sm:text-xs font-medium text-slate-400 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
                 STATUS
               </th>
             </tr>
@@ -123,7 +123,7 @@ export default function IncidentTable() {
           <tbody className="divide-y divide-slate-700">
             {incidents.length === 0 ? (
               <tr>
-                <td colSpan={4} className="px-4 sm:px-6 py-6 sm:py-8 text-center text-slate-400 text-sm">
+                <td colSpan={4} className="px-6 py-8 text-center text-slate-400 text-sm">
                   No incidents found
                 </td>
               </tr>
@@ -131,28 +131,28 @@ export default function IncidentTable() {
               incidents.map((incident) => (
                 <tr
                   key={incident.id}
-                  className="hover:bg-slate-900/50 transition-colors cursor-pointer"
+                  className="hover:bg-slate-900/50 transition-colors duration-200 cursor-pointer"
                 >
-                  <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">
+                  <td className="px-6 py-4 whitespace-nowrap">
                     <Link
                       href={`/incidents/${incident.id}`}
-                      className="text-xs sm:text-sm font-technical text-cyan-400 hover:text-cyan-300"
+                      className="text-sm font-technical text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
                     >
                       {formatIncidentId(incident.id)}
                     </Link>
                   </td>
-                  <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">
-                    <span className="text-xs sm:text-sm text-white font-medium">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="text-sm text-white font-medium">
                       {incident.type.toUpperCase()}
                     </span>
                   </td>
-                  <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">
-                    <Badge variant={getSeverityVariant(incident.severity)} size="sm" className="text-[10px] sm:text-xs">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <Badge variant={getSeverityVariant(incident.severity)} size="sm" className="text-xs">
                       {incident.severity}
                     </Badge>
                   </td>
-                  <td className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 whitespace-nowrap">
-                    <Badge variant={getStatusVariant(incident.status)} size="sm" className="text-[10px] sm:text-xs">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <Badge variant={getStatusVariant(incident.status)} size="sm" className="text-xs">
                       {incident.status === 'IN_PROGRESS' ? 'INVESTIGATING' : incident.status}
                     </Badge>
                   </td>

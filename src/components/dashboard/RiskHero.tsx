@@ -50,8 +50,8 @@ export default function RiskHero() {
 
   if (isLoadingRisk) {
     return (
-      <div className="bg-slate-800 border border-slate-700 rounded-lg p-8 animate-pulse">
-        <div className="h-8 bg-slate-700 rounded w-48 mb-4"></div>
+      <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 animate-pulse">
+        <div className="h-8 bg-slate-700 rounded w-48 mb-8"></div>
         <div className="h-4 bg-slate-700 rounded w-64"></div>
       </div>
     );
@@ -59,7 +59,7 @@ export default function RiskHero() {
 
   if (isErrorRisk || !riskStatus) {
     return (
-      <div className="bg-slate-800 border border-red-700 rounded-lg p-8">
+      <div className="bg-slate-800 border border-red-700 rounded-xl p-6">
         <h2 className="text-2xl font-bold text-red-400 mb-2">Error Loading Risk Status</h2>
         <p className="text-slate-400">Unable to fetch current risk level</p>
       </div>
@@ -78,65 +78,67 @@ export default function RiskHero() {
   ).length;
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-lg p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 w-full">
+    <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 w-full shadow-lg transition-all duration-300 hover:shadow-xl">
       {/* Header Row */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
-        <h2 className="text-[10px] sm:text-xs md:text-sm font-medium text-slate-400 uppercase tracking-wider">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="text-sm font-medium text-slate-400 uppercase tracking-wider">
           GLOBAL RISK LEVEL
         </h2>
-        <div className="text-[9px] sm:text-xs text-slate-500 font-technical">
+        <div className="text-xs text-slate-500 font-technical">
           LAST SYNC {new Date(riskStatus.lastUpdated).toLocaleTimeString()}
         </div>
       </div>
 
       {/* Main Display */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-8">
         {/* Large Circular Icon */}
         <div
           className={`
-            w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ${config.iconBg}
+            w-20 h-20 rounded-full ${config.iconBg}
             flex items-center justify-center
-            flex-shrink-0
-            ${riskStatus.level === 'CRITICAL' ? 'pulse-critical' : ''}
+            flex-shrink-0 shadow-lg
           `}
         >
-          <span className="text-2xl sm:text-3xl md:text-4xl text-white">{config.icon}</span>
+          <span className="text-3xl">{config.icon}</span>
         </div>
 
-        {/* Risk Level Text and Stats */}
-        <div className="flex-1 w-full min-w-0">
-          <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold ${config.textColor} mb-3 sm:mb-4 md:mb-6 lg:mb-8 text-center sm:text-left break-words`}>
+        {/* Risk Level Text */}
+        <div className="flex-1 text-center lg:text-left">
+          <div className={`text-4xl lg:text-5xl font-bold ${config.textColor} mb-2`}>
             {config.label}
-          </h1>
-          
-          {/* Statistics Cards */}
-          <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6 lg:mb-8 justify-center sm:justify-start">
-            <div className="bg-slate-900/50 border border-slate-700 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white font-technical">
-                {activeCount}
-              </div>
-              <div className="text-[10px] sm:text-xs text-slate-400 uppercase">ACTIVE</div>
-            </div>
-            <div className="bg-red-600/20 border border-red-500/30 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-red-400 font-technical">
-                {criticalCount}
-              </div>
-              <div className="text-[10px] sm:text-xs text-red-400 uppercase">CRITICAL</div>
-            </div>
-            <div className="bg-orange-600/20 border border-orange-500/30 rounded px-3 sm:px-4 md:px-6 py-2 sm:py-3 min-w-[80px] sm:min-w-[90px] md:min-w-[100px]">
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-orange-400 font-technical">
-                {suspiciousCount}
-              </div>
-              <div className="text-[10px] sm:text-xs text-orange-400 uppercase">SUSPICIOUS</div>
-            </div>
           </div>
+          <div className="text-slate-400 text-sm">
+            Risk assessment updated in real-time
+          </div>
+        </div>
 
-          {/* Mute Buzzer Button */}
-          {riskStatus.level !== 'NORMAL' && !riskStatus.buzzerMuted && (
-            <div className="flex justify-center sm:justify-start">
-              <MuteBuzzerButton />
-            </div>
-          )}
+        {/* Action Buttons */}
+        <div className="flex flex-row lg:flex-col gap-3">
+          <MuteBuzzerButton />
+        </div>
+      </div>
+
+      {/* Statistics Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-2xl font-bold text-blue-400 mb-1">
+            {activeCount}
+          </div>
+          <div className="text-xs text-slate-400 uppercase tracking-wider">ACTIVE</div>
+        </div>
+        
+        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-2xl font-bold text-red-400 mb-1">
+            {criticalCount}
+          </div>
+          <div className="text-xs text-slate-400 uppercase tracking-wider">CRITICAL</div>
+        </div>
+        
+        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600/50 min-w-[140px] transition-all duration-200 hover:border-slate-600 hover:bg-slate-900/70">
+          <div className="text-2xl font-bold text-orange-400 mb-1">
+            {suspiciousCount}
+          </div>
+          <div className="text-xs text-slate-400 uppercase tracking-wider">SUSPICIOUS</div>
         </div>
       </div>
     </div>

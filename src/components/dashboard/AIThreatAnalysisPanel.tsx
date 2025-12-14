@@ -33,27 +33,27 @@ export default function AIThreatAnalysisPanel() {
   }
 
   return (
-    <Card className="h-fit w-full">
+    <Card className="h-fit w-full shadow-lg transition-all duration-300 hover:shadow-xl">
       {/* Header */}
-      <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
-        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-          <span className="text-xl sm:text-2xl flex-shrink-0">🧠</span>
-          <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white truncate">AI Threat Analysis</h3>
+      <div className="flex items-center justify-between mb-6 gap-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="text-2xl flex-shrink-0">🧠</span>
+          <h3 className="text-lg font-semibold text-white truncate">AI Threat Analysis</h3>
         </div>
-        <Badge variant="info" size="sm" className="text-[9px] sm:text-xs flex-shrink-0">
+        <Badge variant="info" size="sm" className="text-xs flex-shrink-0">
           GPT-4
         </Badge>
       </div>
 
       {/* Incident ID */}
-      <div className="mb-3 sm:mb-4">
-        <p className="text-xs sm:text-sm text-slate-400 font-technical">
-          Incident {formatIncidentId(firstIncidentId)}
+      <div className="mb-6">
+        <p className="text-sm text-slate-400 font-technical">
+          ANALYZING: {formatIncidentId(firstIncidentId)}
         </p>
       </div>
 
       {isLoading ? (
-        <div className="space-y-3 animate-pulse">
+        <div className="space-y-4 animate-pulse">
           <div className="h-4 bg-slate-700 rounded w-3/4"></div>
           <div className="h-4 bg-slate-700 rounded w-full"></div>
           <div className="h-4 bg-slate-700 rounded w-5/6"></div>
