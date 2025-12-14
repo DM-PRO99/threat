@@ -1,0 +1,4 @@
+Test deployment - Vercel should detect this change
+Created: 2025-12-14
+Next.js version: 16.0.10
+Repo: threatbeacon-org/threatbeacon-frontend
