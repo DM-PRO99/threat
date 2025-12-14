@@ -6,12 +6,12 @@
 import type { RiskStatus, IncidentSummary, IncidentDetail, IncidentInsight } from '@/lib/api/types';
 
 export const mockRiskStatus: RiskStatus = {
-  level: 'SUSPICIOUS',
+  level: 'CRITICAL',
   buzzerMuted: false,
   lastUpdated: new Date().toISOString(),
-  activeIncidents: 3,
-  criticalCount: 0,
-  suspiciousCount: 2,
+  activeIncidents: 5,
+  criticalCount: 2,
+  suspiciousCount: 3,
 };
 
 export const mockIncidents: IncidentSummary[] = [
