@@ -74,7 +74,7 @@ export default function BeaconsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div>
+        <div className="ml-1">
           <h1 className="text-2xl font-bold text-white mb-2">Beacons</h1>
           <p className="text-slate-400">
             Monitor and manage ThreatBeacon devices
@@ -89,7 +89,7 @@ export default function BeaconsPage() {
             <div className="space-y-4">
               {/* Status */}
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-400">Status</span>
+                <span className="text-sm text-slate-400 ml-1">Status</span>
                 <Badge variant={getStatusVariant(beacon.status)}>
                   {beacon.status.toUpperCase()}
                 </Badge>
@@ -97,7 +97,7 @@ export default function BeaconsPage() {
 
               {/* Last Seen */}
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-400">Last Seen</span>
+                <span className="text-sm text-slate-400 ml-1">Last Seen</span>
                 <span className="text-xs text-slate-300 font-mono">
                   {new Date(beacon.lastSeen).toLocaleTimeString()}
                 </span>
@@ -106,7 +106,7 @@ export default function BeaconsPage() {
               {/* Battery Level */}
               {beacon.batteryLevel && (
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400">Battery</span>
+                  <span className="text-sm text-slate-400 ml-1">Battery</span>
                   <span className={`text-sm font-mono ${getBatteryColor(beacon.batteryLevel)}`}>
                     {beacon.batteryLevel}%
                   </span>
@@ -115,14 +115,14 @@ export default function BeaconsPage() {
 
               {/* Firmware */}
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-400">Firmware</span>
+                <span className="text-sm text-slate-400 ml-1">Firmware</span>
                 <span className="text-xs text-slate-300 font-mono">
                   {beacon.firmware}
                 </span>
               </div>
 
               {/* Actions */}
-              <div className="pt-3 border-t border-slate-700 flex gap-2">
+              <div className="pt-3 border-t border-slate-700 flex gap-2 justify-center">
                 <Button variant="ghost" size="sm" className="flex-1">
                   Test
                 </Button>
@@ -136,28 +136,30 @@ export default function BeaconsPage() {
       </div>
 
       {/* System Overview */}
-      <Card title="System Overview" subtitle="Beacon network statistics">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-            <div className="text-2xl font-bold text-green-400 mb-1">
-              {beacons.filter(b => b.status === 'online').length}
+      <div className="ml-1">
+        <Card title="System Overview" subtitle="Beacon network statistics">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+              <div className="text-2xl font-bold text-green-400 mb-1">
+                {beacons.filter(b => b.status === 'online').length}
+              </div>
+              <div className="text-sm text-slate-400">Online</div>
             </div>
-            <div className="text-sm text-slate-400">Online</div>
-          </div>
-          <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-            <div className="text-2xl font-bold text-orange-400 mb-1">
-              {beacons.filter(b => b.status === 'warning').length}
+            <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+              <div className="text-2xl font-bold text-orange-400 mb-1">
+                {beacons.filter(b => b.status === 'warning').length}
+              </div>
+              <div className="text-sm text-slate-400">Warning</div>
             </div>
-            <div className="text-sm text-slate-400">Warning</div>
-          </div>
-          <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
-            <div className="text-2xl font-bold text-red-400 mb-1">
-              {beacons.filter(b => b.status === 'offline').length}
+            <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+              <div className="text-2xl font-bold text-red-400 mb-1">
+                {beacons.filter(b => b.status === 'offline').length}
+              </div>
+              <div className="text-sm text-slate-400">Offline</div>
             </div>
-            <div className="text-sm text-slate-400">Offline</div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 }
