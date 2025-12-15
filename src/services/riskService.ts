@@ -15,15 +15,17 @@ export async function fetchRiskStatus(): Promise<RiskStatus> {
 
 /**
  * Mutes the buzzer
+ * CORRECCIÓN: Usamos el endpoint de /api/risk/mute que devuelve RiskStatus actualizado
  */
-export async function muteBuzzer(): Promise<void> {
-  return await apiClient.post<void>('/api/risk/mute', { muted: true });
+export async function muteBuzzer(): Promise<RiskStatus> {
+  return await apiClient.post<RiskStatus>('/api/risk/mute', { muted: true });
 }
 
 /**
  * Stops the buzzer and resets system to normal
+ * CORRECCIÓN: Usamos el endpoint de /api/risk/mute que devuelve RiskStatus actualizado
  */
-export async function stopBuzzer(): Promise<void> {
-  return await apiClient.post<void>('/api/risk/mute', { muted: false });
+export async function stopBuzzer(): Promise<RiskStatus> {
+  return await apiClient.post<RiskStatus>('/api/risk/mute', { muted: false });
 }
 
